@@ -1,0 +1,365 @@
+% Chapter 2
+
+\chapter{Comment utiliser le \textit{template} \LaTeX{} pour les mémoires}	%The main chapter title
+\chaptermark{O \textit{Template}}	%Short version for page header. Comment if not needed
+\label{Chapter2}	%For referencing the chapter elsewhere, use \ref{Chapter2} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'option de \LaTeX{} pour préparer le rapport favorise l'aspect graphique du document final, mais un document visuellement beau ne remplace pas une rédaction soignée et une présentation structurée des idées. Ce chapitre est dédié à la présentation du \textit{template} et à certains aspects de l'insertion de citations, figures, tableaux, équations et autres éléments dont la mise en forme doit être cohérente dans tout le document.
+
+Le \textit{template} \LaTeX{} pour les mémoires de Master a été développé, et est maintenu par Romain Rouvoy, sur la base de la \textit{template} `` Master / Doctor Thesis '' disponible sur \url{www.LaTeXTemplates.com}. Les suggestions et commentaires peuvent être envoyés à \verb|romain.rouvoy@univ-lille.fr|. Cependant, il convient de noter que \underline{o \textit{template} est fourni sans assistance} et que l'utilisateur est entièrement responsable de toute modification du code et/ou des fichiers fournis.
+
+\begin{comment}
+L'environnement de commentaire est utilisé pour commenter facilement de grandes sections de code LateX. L'environnement de commentaire est utilisé pour commenter facilement de grandes sections de code LateX. L'environnement de commentaire est utilisé pour commenter facilement de grandes sections de code LateX. L'environnement de commentaire est utilisé pour commenter facilement de grandes sections de code LateX. L'environnement de commentaire est utilisé pour commenter facilement de grandes sections de code LateX.
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction à \LaTeX{}}
+\label{sec:Ch2.1}
+
+\LaTeX{} est un outil puissant pour produire des documents. Contrairement aux traitements de texte courants comme Microsoft Word ou LibreOffice Writer, \LaTeX{} n'est pas un programme \ac{wys}. Au lieu de cela, un document écrit pour \LaTeX{} est en fait un simple fichier texte sans aucun formatage. Tout format requis dans le document final est défini par des commandes spécifiques que \LaTeX{} interprète lors de la compilation du document. Par exemple, pour mettre un mot en italique, dans le fichier de code, vous écrivez \verb|\textit{mot}| pour obtenir \textit{mot} dans le document final. Cela signifie que \LaTeX{} est un langage \emph{balisage}, similaire à \ac{html}. De cette manière, l'auteur peut se concentrer sur la tâche essentielle de l'écriture, sans avoir à se soucier de la mise en forme, de la pagination et des autres arrangements visuels du document en préparation. \LaTeX{} est largement utilisé dans le milieu universitaire pour la préparation et la publication de documents scientifiques dans plusieurs domaines, notamment les mathématiques, les statistiques, l'ingénierie, la physique, l'économie, entre autres. Il joue également un rôle important dans la préparation et la publication de livres.
+
+Pour ceux qui commencent par \LaTeX{}, en plus des nombreux \textit{sites Web} contenant des informations (par exemple, \url{www.overleaf.com/learn}), le livre gratuit intitulé ``One no such a small introduction to \LaTeX{}'' disponible en plusieurs langues sur \url{www.ctan.org/tex-archive/info/lshort/}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Comment utiliser le modèle}
+
+Le \textit{template} est disponible et prêt à être utilisé dans Moodle et dans la \textit{Overleaf Templates Gallery}. Indépendamment du choix de développer votre rapport sur Overleaf ou localement sur votre ordinateur personnel, il est essentiel de se familiariser avec la structure des répertoires et des fichiers fournis avec \textit{template}.
+
+\paragraph{Répertoires}
+
+Les noms de répertoires sont généralement explicites:
+\begin{itemize}
+     \item \textbf{chapitres} - ce répertoire est l'endroit où vous devez placer les chapitres du rapport, y compris les pièces jointes. Chaque chapitre (et annexe) doit avoir son propre fichier \file{.tex} et, bien qu'il n'y ait pas de règle stricte pour le nom et le nombre de chapitres, il doit toujours y avoir une ``Introduction'' et les ``Conclusions'';
+
+     \item \textbf{figures} - ce répertoire doit contenir toutes les figures utilisées dans le rapport. Il est recommandé d'utiliser un système de noms de fichiers qui facilite l'association d'un fichier avec une section du document;
+
+     \item \textbf{front} - ce répertoire contient déjà plusieurs fichiers pour les sections initiales prédéfinies du rapport, appelées \textit{frontmatter}. Vous pouvez choisir de ne pas utiliser certaines de ces sections si elles ne concernent pas votre document.
+\end{itemize}
+
+\paragraph{Fichiers}
+En plus de la structure des répertoires, plusieurs fichiers sont également fournis, la plupart en texte brut et dont le contenu peut être visualisé avec un éditeur de texte. Après la compilation avec \LaTeX{} plusieurs fichiers auxiliaires sont créés automatiquement, cependant, en règle générale, vous n'avez pas besoin de les prendre en compte.
+
+\begin{itemize}
+    \item \textbf{sampleRefs.bib} - c'est le fichier pour BibTeX qui contient toutes les références que vous citerez dans le rapport. Cela peut être modifié manuellement, mais il existe des programmes disponibles (par exemple, \url{www.jabref.org}) pour gérer les références qui facilitent l'ensemble du processus. Vous pouvez renommer le fichier tant que cette modification est également effectuée dans le fichier \file{main.tex}. Les références seront présentées dans le document final dans le style \textbf{ieeetr}. Considérez les exemples de divers types de références fournis dans le fichier \file{sampleRefs.bib} pour créer votre propre liste;
+
+    \item \textbf{DEEclass.cls} - ce fichier définit la classe de document DEEclass. Il est fortement déconseillé de sa modification;
+
+    \item \textbf{preamble.tex} - ce fichier doit être utilisé pour ajouter \glspl{pack}, des paramètres et des macros, spécifiques à votre document. Cela évite que le préambule du fichier principal \file{main.tex} ne devienne trop long;
+
+    \item \textbf{main.tex} - c'est le fichier le plus important pour définir votre document. Le code de ce fichier définit la structure et contient les instructions qui conduisent \LaTeX{} à générer le PDF final. Tenez compte des commentaires présentés dans le fichier lui-même afin de savoir ce que fait chaque ligne / section de code et comment \textit{template} peut être adapté à votre cas. C'est ce fichier que vous devez éditer pour démarrer la préparation de votre rapport. Félicitations pour avoir décidé d'utiliser \LaTeX{}!
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Modification du fichier \file{main.tex}}
+\label{subsec: Ch2.2.3}
+
+Pour démarrer votre document, la première chose à faire est de renseigner vos informations et de choisir certaines options dans le fichier \file{main.tex}. Après avoir ouvert ce fichier, recherchez la section identifiée comme `` PARAMÈTRES PRINCIPAUX '' (ligne 18). Dans cette section, vous devez choisir votre mention, parmi les deux options:
+\begin{itemize}
+    \item \acs{info} (\acl{info})
+    \item \acs{miage} (\acl{miage})
+\end{itemize}
+\newpage
+\noindent et la langue principale du document, des deux options:
+\begin{itemize}
+    \item french
+    \item english
+\end{itemize}
+
+Lorsque vous choisissez le français comme langue principale, l'anglais est automatiquement utilisé comme deuxième langue. Le contraire est vrai si vous choisissez l'anglais comme langue principale du document.
+
+Pour procéder à la personnalisation, retrouvez la section `` INFORMATIONS DE RAPPORT '' (ligne 29). Après avoir rempli les champs de cette section avec les données:
+\begin{itemize}
+    \item titre du poste (et sous-titre si nécessaire),
+    \item identification du candidat (nom, numéro mécanographique et \textit{email}),
+    \item identification de l'élément de l'encadrant \ac{fil} (nom et \textit{email}),
+    \item le cas échéant, identification du co-superviseur de \ac{fil} (nom et \textit{email}),
+    \item le cas échéant, identification de l'entreprise où s'est déroulé le stage (nom) et du conseiller (nom et \textit{email}),
+\end{itemize}
+
+\noindent peut compiler votre document. Toutes les informations saisies doivent maintenant être visibles (sur les pages de garde) dans le PDF généré.
+
+Le fichier \file{main.tex} est également utilisé pour définir la structure et le contenu du rapport. Tenez compte des commentaires que vous pouvez lire tout au long du fichier pour savoir où placer, par exemple, de nouveaux chapitres ou masquer des sections que vous n'avez pas l'intention d'utiliser dans votre document (par exemple, `` Dédicace ''). Brièvement dans la rubrique `` FRONTMATTER '' (ligne 55):
+
+\begin{itemize}
+    \item La ligne \verb|\include{front/1_dedicatory}| fait référence à la section ``Dédicace''. Si vous souhaitez rédiger une dédicace, modifiez le fichier \path{/front/1_dedicatory.tex}. Sinon, commentez simplement la ligne pour que le contenu du fichier ne soit pas pris en compte;
+    \item La ligne \verb|\include{front/2_acknowledgements}| reportez-vous à la section ``Remerciements'' et pour le modifier, allez dans le fichier \path{/front/2_acknowledgements.tex};
+    \item La ligne \verb|\include{front/3_abstract}| fait référence aux sections ``Résumé'' et ``Abstract'', et leur contenu est modifié dans le fichier \path{/front/3_abstract.tex}. Notez que vous devrez toujours rédiger cette section en deux langues, lisez attentivement les instructions contenues dans le fichier. C'est dans cette section que sont également introduits les mots-clés associés à votre travail;
+    \item La ligne \verb|\include{front/4_frontmatterlists}| renvoie aux sections ``Liste des figures'', ``Liste des tableaux'', ``Listes'', ``Glossaire'', ``Liste des acronymes'' et ``Liste des symboles''. Vous devez modifier le contenu du fichier \path{/front/4_frontmatterlists.tex} pour sélectionner (en commentant ou non les lignes respectives) quelles sections doivent faire partie de votre document.
+\end{itemize}
+
+N'importe laquelle des lignes peut être commentée si vous ne souhaitez pas utiliser la section correspondante, DEEclass s'occupe de tous les aspects de la pagination et du formatage du document final. Pour ajouter du contenu aux listes de termes, acronymes et symboles, retrouvez la section ``LISTES DÉFINIES PAR L'UTILISATEUR'' (ligne 45).
+
+\begin{itemize}
+    \item La ligne \verb|\input{front/0_glossary}| fait référence aux sections ``Glossaire''. Modifiez le fichier \path{/front/0_glossary.tex} pour créer votre dictionnaire de rapports;
+    \item La ligne \verb|\input{front/0_acronymes}| fait référence à la section ``Liste des acronymes''. Modifiez le fichier \path{/front/5_listofacronyms.tex} pour créer votre liste d'acronymes;
+    \item Dans le même sens, la ligne \verb|\input{front/0_symbols}| fait référence à la section ``Liste des symboles'' associée au fichier \path{/front/6_listofsymbols.tex}.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Formats et règles}
+L'un des éléments les plus importants (et les plus difficiles) à conserver dans un long document comme un mémoire de Master est la cohérence. Ainsi, l'utilisation de certaines conventions facilite le travail pour vous et le(s) encadrant(s). Utilisez le code fourni dans ce fichier comme base pour saisir vos figures, tableaux et autres éléments.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Glossaire, acronymes et symboles}
+
+Pour aider le candidat à gérer les listes de termes spécifiques (\gls{gloss}), acronymes et symboles, \textit{template} utilise \textit{package} \verb|glossaries|. Cela permet par exemple de classer par ordre alphabétique les listes mentionnées et aussi que les acronymes soient décrits au moins une fois dans le texte. Les listes de termes, acronymes et symboles sont définis dans les fichiers mentionnés dans la sous-section~\ref{subsec: Ch2.2.3}. Considérez les informations dans les commentaires et les exemples fournis, ainsi que dans la documentation \gls{pack} disponible sur \url{ctan.org/pkg/glossaries} ou sur \url{en.wikibooks.org/wiki/LaTeX/Glossary }.
+
+Dans le document, pour saisir les termes définis dans le glossaire, utilisez la commande \verb|\gls{<tag>}|, où \verb|<tag>| fait référence au terme identificateur défini dans le fichier \verb|0_glossary.tex|. O \textit{package} \verb|glossaires| il fournit des commandes supplémentaires qui vous permettent de saisir des variantes du terme défini à l'origine, pour cela, consultez la documentation.
+
+Pour introduire des acronymes dans tout le texte, l'utilisation la plus courante se fera via la commande \verb|\ac{<tag>}|, où \verb|<tag>| fait référence à l'identifiant d'acronyme défini dans le fichier \verb|0_acronyms.tex|. La première fois que la commande est utilisée, la version complète est introduite (par exemple, \ac{api}), et les suivants, seul l'acronyme (par exemple, \ac{api}) sera affiché. Le tableau~\ref{tab: acros} résume les principales commandes à prendre en compte.
+
+\begin{table} [htb]
+    \caption{Commandes principales pour saisir des acronymes.}
+    \label{tab: acros}
+    \center
+    \begin{tabular}{l l l}
+        \toprule
+        \tabhead{Commande} & \tabhead{} & \tabhead{Résultat} \\
+        \midrule
+        \verb|\ac{usb}| & première utilisation de & \ac{usb} \\
+        \verb|\ac{usb}| & répéter la commande & \ac{usb} \\
+        \verb|\acl{usb}| & forcer le nom complet & \acl{usb} \\
+        \verb|\acs{usb}| & forcer l'acronyme & \acs{usb} \\
+        \verb|\acf{usb}| & forcer la version complète & \acf{usb} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+De plus, pour qu'un terme ou un acronyme apparaisse dans la liste respective du document final, vous devrez les utiliser au moins une fois dans tout le texte. La même chose ne s'applique pas aux symboles définis dans \verb|front / 0_symbols.tex|.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Références}
+
+BibTeX est utilisé pour formater les références bibliographiques et insérer des citations comme celle-ci \cite{W3C05} en utilisant la commande \verb|\cite{<Bibtexkey>}|. Les options adoptées pour DEEclass font que les citations dans le texte sont présentées sous forme de nombres entre crochets. Les citations multiples sont séparées par des virgules (par exemple, \cite{Lipsum08, Li00, Candy92}). Dans la section correspondante, les références sont classées dans l'ordre de citation.
+
+Considérez que les guillemets \cite{Motorola96} doivent être placés avant les signes de ponctuation \cite{Jain87}, le cas échéant, sous forme de virgule ou de point \cite{Delorme95}. Il en va de même pour les notes de bas de page.\footnote{Comme cette note de bas de page, ici.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Listes}
+
+Les listes non numérotées sont produites par l'environnement \code{itemize}. Chaque entrée de la liste doit être précédée de la séquence de contrôle \code{\textbackslash item}. D'autre part, les listes ordonnées sont générées par l'environnement \code{enumerate} et chaque entrée doit également être précédée de \code{\textbackslash item}, qui générera automatiquement le libellé de cette entrée. Les deux environnements peuvent être utilisés de manière chaînée.
+
+\clearpage
+\begin{enumerate}
+    \item Liste ordonnée de premier niveau
+    \item Liste ordonnée de premier niveau
+    \begin{itemize}
+      \item Liste non ordonnée de deuxième niveau
+      \begin{itemize}
+        \item Liste non ordonnée de troisième niveau
+      \end{itemize}
+      \item Liste non ordonnée de deuxième niveau
+      \begin{enumerate}
+        \item Liste ordonnée de troisième niveau
+        \item Liste ordonnée de troisième niveau
+      \end{enumerate}
+    \end{itemize}
+    \item Liste ordonnée de premier niveau
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Figures}
+
+Il est souhaitable que votre document comprenne des chiffres en quantité et en qualité afin d'illustrer les idées que vous souhaitez véhiculer. Tous les fichiers de figures doivent être placés dans le répertoire \path{/figures}. Pour insérer les figures dans votre document, vous devez, en règle générale, utiliser le code:
+\begin{verbatim}
+\begin{figure}[htbp]
+    \centrage
+    \includegraphics[width=\linewidth]{cap2_fig1.eps}
+    \caption{Schéma fonctionnel.}
+    \label{fig:exemple1}
+\end{figure}
+\end{verbatim}
+
+Ce code produit Figure~\ref{fig: exemple1}. Les figures peuvent être redimensionnées à l'aide de l'option \code{scale}, ou relatives, par exemple, à la largeur de la zone de texte de la forme: \path{\includegraphics[width=0.5\textwidth]{cap2_fig1.eps}}. Si nécessaire, vous pouvez également utiliser des sous-figures (voir code dans ce fichier), comme le montre la Figure~\ref{fig: example2} qui contient les sous-figures~\ref{fig: subfigA} et~\ref{fig : subfigB}.
+
+\begin{figure}[htbp]
+    \center
+    \includegraphics[scale=0.8]{cap2_fig1.eps}
+    \caption{Schéma fonctionnel.}
+    \label{fig:exemple1}
+\end{figure}
+
+\begin{figure} [htbp]
+  \center
+  \subcaptionbox{Une sous-figure \label{fig:subfigA}}{\includegraphics[width=0.45\linewidth]{cap2_fig1.eps}}
+% \hfill
+  \subcaptionbox{\label{fig:subfigB}}{\includegraphics[width=0.45\linewidth]{cap2_fig1.eps}}
+  \caption[Une figure avec deux sous-figures.]{Une figure avec deux sous-figures: (a) avec une légende et (b) sans une légende \cite{Motorola96}.}
+  \label{fig:exemple2}
+\end{figure}
+
+Gardez à l'esprit que les chiffres n'apparaîtront pas toujours à l'endroit où vous avez écrit le code, car le placement dépend de l'espace disponible sur la page. Le positionnement des figures est un travail pour \LaTeX{} et vous ne devriez donc vous préoccuper que de la création d'images, de préférence au format vectoriel (par exemple, EPS, PDF). En ce sens, il existe plusieurs outils et Inkscape (\url{inkscape.org}) est une excellente alternative. \LaTeX{} accepte par défaut les formats PDF, JPG et PNG. Les figures doivent toujours être référencées dans le texte et doivent également toujours avoir une légende, définie à l'aide de la commande \verb|\caption{}|. N'oubliez pas que lorsqu'une figure est obtenue à partir d'une référence bibliographique, c'est-à-dire qu'elle n'est pas de son auteur, ce fait doit être mentionné (voir légende de la figure~\ref{fig:exemple2}).
+
+Ce \textit{template} fournit la commande supplémentaire \verb|\inlinegraphics| qui vous permet d'insérer des figures dans la ligne de texte. Ceci est un exemple \inlinegraphics{Inlinefigureexample.png}, vérifiez comment utiliser la commande dans le code de ce fichier. Parfois, une figure doit être affichée dans \textit{paysage}, où Figure~\ref{fig:exemple3} est un exemple de cette forme de présentation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Tables}
+
+Les tableaux sont un moyen important de présenter les informations. Le tableau~\ref{tab: basictable} illustre l'application des principales directives à prendre en compte lors de la construction des tableaux:
+
+\begin{enumerate}
+   \item N'utilisez pas de lignes verticales,
+   \item La légende est placée avant le tableau,
+   \item Utilisez les macros \verb|\toprule|, \verb|\midrule| e \verb|\bottomrule| pour créer respectivement les lignes horizontales du haut, du milieu et du bas du tableau.
+\end{enumerate}
+
+\begin{landscape}
+    \begin{figure} [htbp]
+        \center
+        \includegraphics[width=0.8\linewidth]{cap2_fig1.eps}
+        \caption{Une figure dans \textit{paysage}.}
+        \label{fig:exemple3}
+    \end{figure}
+\end{landscape}
+
+Considérez le code suivant utilisé pour créer la table~\ref{tab: basictable}:
+{\small
+\begin{verbatim}
+\begin{table}
+    \caption{Exemple de tableau simple dans \LaTeX{}.}
+    \label{tab: basictable}
+    \center
+    \begin{tabular}{l c c}
+        \toprule
+        \tabhead{Colonne 1} & \tabhead{Colonne 2} & \tabhead{Colonne 3} \\
+        \midrule
+        Ligne 1 & 0,2 & 0,8 \\
+        Ligne 2 & 0,17 & 0,7 \\
+        Ligne 3 & 0,24 & 0,75 \\
+        Ligne 4 & 0,68 & 0,3 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\end{verbatim}
+}
+
+\begin{table}[htb]
+    \caption{Exemple de tableau simple dans \LaTeX{}.}
+    \label{tab:basictable}
+    \center
+    \begin{tabular}{l c c}
+        \toprule
+        \tabhead{Colonne 1} & \tabhead{Colonne 2} & \tabhead{Colonne 3} \\
+        \midrule
+        Ligne 1 & 0,2 & 0,8 \\
+        Ligne 2 & 0,17 & 0,7 \\
+        Ligne 3 & 0,24 & 0,75 \\
+        Ligne 4 & 0,68 & 0,3 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Pour faire référence aux tables, utilisez la commande \verb|\ref{<label>}|, où \verb|<label>| fait référence à l'étiquette définie par \verb|\label{<label>}|. En règle générale, mettez toujours un tilde, c'est-à-dire \verb|Table~\ref{<label>}|, pour introduire un \textit{espace incassable}. Des environnements et des commandes supplémentaires peuvent être utilisés pour créer des tables plus complexes/spécifiques (tant que les règles générales définies ci-dessus sont maintenues): \verb|tabularx|, \verb|longtable|, \verb|\multicolumn|, \verb|\multirow|, entre autres. En cas de difficulté dans la création du code des tables, \textit{website} \url{www.tablesgenerator.com} est suggéré.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Listes de codes}
+
+Pour afficher des extraits de code source dans votre rapport, ce \textit{template} utilise \gls{pack} \verb|listings|. Gardez à l'esprit que par défaut, les listes sont définies pour flotter afin que \LaTeX{} puisse les positionner de la meilleure façon. Cette définition implique également qu'une liste ne sera pas divisée par une nouvelle page, il est donc recommandé d'utiliser des extraits qui ne dépassent pas une page. Il existe de nombreuses options qui peuvent être spécifiées dans cet environnement, pour plus d'informations, voir \url{en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}.
+
+La commande \verb|\printlistoflistings|, invoquée dans le fichier \path{4_frontmatterlists.tex}, crée la section `` Listes '' dans votre document. Donc, si vous n'avez pas besoin d'utiliser des listes, vous devriez commenter cette commande. La liste~\ref{lst: examplo1} et la liste~\ref{lst: examplo2} sont deux exemples de listes de codes. Veuillez consulter le contenu de ce fichier pour plus de détails.
+
+\begin{center}
+    \begin{minipage}{0.7 \linewidth}
+        \begin{lstlisting} [language=C, caption=Exemple simple de C., label=lst:examplo1]
+        #include <stdio.h>
+        main()
+        {
+        printf ("Bonjour le monde");
+        }
+        \end{lstlisting}
+    \end{minipage}
+\end{center}
+
+Une liste de codes peut également être insérée directement à partir d'un fichier en utilisant la commande \verb|\lstinputlisting[<settings>]{<pathtofile>/file.c}|.
+
+\begin{minipage}{0.9 \linewidth}
+    \begin{lstlisting} [language=Python, caption=Exemple long en Python., label=lst:examplo2]
+import numpy as np
+    
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)               
+                VT = np.zeros((n*m,1), int)  
+    return M
+    \end{lstlisting}
+\end{minipage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Équations}
+
+Si votre thèse utilise un contenu mathématique, alors l'option d'utiliser \LaTeX{} était la bonne. Le livre ``Une pas si petite introduction à \LaTeX{}'' contient suffisamment d'informations pour la plupart des cas de composition mathématique, mais pour un contenu plus complet, le guide \url{tug.ctan.org/info/short est recommandé -math- guide / short-math-guide.pdf}. De plus, une liste complète de symboles peut être trouvée sur \url{tug.ctan.org/info/symbols/comprehensive/symbols-a4.pdf}.
+
+\LaTeX{} vous permet d'écrire des équations \textit{inline} telles que $E = mc^{2}$ ou en mode \textit{display}, auquel cas elles sont automatiquement numérotées:
+\begin{verbatim}
+\begin{equation}
+    E=mc^{2}.
+    \label{eqn:einstein}
+\end{equation}
+\end{verbatim}
+
+\noindent qui produit la fameuse équation:
+\begin{equation}
+    E=mc^{2}.
+    \label{eqn:einstein}
+\end{equation}
+
+Alternativement, si vous voulez que (\ref{eqn:einstein}) ne soit pas numéroté, vous pouvez utiliser le code \verb|$$E=mc^{2}$$| qui produit:
+$$E=mc ^{2}.$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Théorèmes}
+
+Les théorèmes, les lemmes et les corollaires doivent être numérotés par ordre croissant. Le \textit{template} fournit ces environnements adaptés à la langue sélectionnée pour le document dans \file{main.tex}. Via la commande \verb|\newtheorem| vous pouvez créer des environnements supplémentaires du même type (dans le fichier \file{preamble.tex}).
+
+\begin{theorem}
+Ceci est un exemple d'application de l'environnement \code{theorem}. Les théorèmes sont numérotés par ordre croissant, à partir de 1.
+\end{theorem}
+
+\begin{corollary}
+Ceci est un exemple de l'application de l'environnement \code{corollary}. Les corollaires sont numérotés par ordre croissant, à partir de 1.
+\end{corollary}
+
+\begin{lemma}
+Voici un exemple d'application de l'environnement \code{lemma}. Les devises sont numérotées par ordre croissant, à partir de 1.
+\end{lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\section{Notes supplémentaires}
+
+\textbf{Bonne chance!}
